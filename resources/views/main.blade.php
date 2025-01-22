@@ -128,13 +128,11 @@
                         </div>
                         <div class="login_menu">
                             <ul>
-                                <!-- <li><a href="#">
-                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
-                           </li> -->
-                                <li><a href="#">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="padding_10">Compte</span></a>
+                            <li><a href="{{route('login')}}">
+                              <i class="fa fa-wifi" aria-hidden="true"></i> Connexion</a>
+                           </li> 
+                                <li><a href="{{route('creercompte')}}">
+                                        <i class="fa fa-user" aria-hidden="true"></i> Créer un compte</a>
                                 </li>
                             </ul>
                         </div>
