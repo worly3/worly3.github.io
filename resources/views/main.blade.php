@@ -90,7 +90,7 @@
                         <a href="{{ route('aboutus') }}">A-propos</a>
                         <a href="{{ route('contactus') }}">Nous Contacter</a>
                     </div>
-                    <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+                    <span class="toggle_icon" onclick="openNav()"><img src="{{URL::asset('images/toggle-icon.png')}}"></span>
                     <!-- <div class="dropdown">
                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                      </button>
@@ -128,12 +128,18 @@
                         </div>
                         <div class="login_menu">
                             <ul>
-                            <li><a href="{{route('login')}}">
-                              <i class="fa fa-wifi" aria-hidden="true"></i> Connexion</a>
-                           </li> 
-                                <li><a href="{{route('creercompte')}}">
+                                {{-- {{ route('adminaccueil') }} à utilisé après --}}
+                                @if(Session::get("userlogged"))                           
+                                <li><a @if(Session::get("usertype") == "admin" || Session::get("usertype") == "super" ) href="" @else href="{{ route('clientportal') }}" @endif ><i class="fa fa-user" aria-hidden="true"></i>  Mon Compte</a></li>
+                                @else
+                                <li><a href="{{ route('login') }}">
+                                        <i class="fa fa-wifi" aria-hidden="true"></i> Connexion</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('creercompte') }}">
                                         <i class="fa fa-user" aria-hidden="true"></i> Créer un compte</a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -227,7 +233,7 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
-        $(function () {
+        $(function() {
             $("#copyright_year").text(new Date().getFullYear());
         })
     </script>
